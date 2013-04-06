@@ -21,7 +21,7 @@ import android.widget.Toast;
 //################################################
 //lessons: actionbar, dialogs, menus
 //################################################
-public class Main extends Activity implements OnClickListener {
+public class Main extends Activity  {
 	/** Called when the activity is first created. */
 
 	// used for progress dialog
@@ -30,9 +30,7 @@ public class Main extends Activity implements OnClickListener {
 	Handler hnd = new Handler();
 	Thread thr;
 
-	// buttons
-	Button btnContext;
-	Button btnAlert;
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -40,99 +38,13 @@ public class Main extends Activity implements OnClickListener {
 
 		setContentView(R.layout.main);
 
-		//register this button for context menu
-		btnContext = (Button) findViewById(R.id.btnContext);
-		registerForContextMenu(btnContext);
-
-		//register this button for onClick
-		btnAlert = (Button) findViewById(R.id.btnAlert);
-		btnAlert.setOnClickListener(this);
 
 	}// end onCreate()
 
-	//################################################
-	// method to satisfy OnClickListener interface
-	//################################################
-	@Override
-	public void onClick(View v) {
-		showAlert(Main.this, "are you sure you want to download?");
 
-	}
-	
-	
 
-	//################################################
-	//used for actionbar
-	//################################################
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
 
-		MenuInflater mni = getMenuInflater();
-		mni.inflate(R.menu.actbar, menu);
 
-		// need to return true, otherwise it won't show up
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
-		switch (item.getItemId()) {
-		case R.id.itm1:
-			Toast.makeText(this, "option item 1 clicked", Toast.LENGTH_SHORT)
-					.show();
-			break;
-		case R.id.itm2:
-			Toast.makeText(this, "option item 2 clicked", Toast.LENGTH_SHORT)
-					.show();
-			break;
-		case R.id.itm3:
-			Toast.makeText(this, "option item 3 clicked", Toast.LENGTH_SHORT)
-					.show();
-			break;
-		default:
-			break;
-		}
-		return true;
-	}
-
-	
-	//################################################
-	//used for context menu
-	//################################################
-	@Override
-	public void onCreateContextMenu(ContextMenu menu, View v,
-			ContextMenuInfo menuInfo) {
-		// TODO Auto-generated method stub
-		super.onCreateContextMenu(menu, v, menuInfo);
-		MenuInflater mni = getMenuInflater();
-		mni.inflate(R.menu.context, menu);
-
-	}
-
-	@Override
-	public boolean onContextItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
-		switch (item.getItemId()) {
-		case R.id.con1:
-			Toast.makeText(this, "context item 1 clicked", Toast.LENGTH_SHORT)
-					.show();
-			break;
-		case R.id.con2:
-			Toast.makeText(this, "context item 2 clicked", Toast.LENGTH_SHORT)
-					.show();
-			break;
-		case R.id.con3:
-			Toast.makeText(this, "context item 3 clicked", Toast.LENGTH_SHORT)
-					.show();
-			break;
-		default:
-			break;
-		}
-
-		return true;
-	}
-	
 	//################################################
 	// helper methods for alert and progress bar simluation
 	//################################################
